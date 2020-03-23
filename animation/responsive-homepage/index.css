@@ -1,0 +1,129 @@
+*, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background:#ff30ff url('backgroud.jpg');
+  background-size: contain;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-container {
+  width: 100vw;
+  height: 4rem;
+  padding: 0 5vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(65, 81, 101, .9);
+}
+
+.nav-logo {
+  flex: 1;
+  padding: 0 1rem;
+  color: #dadada;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding: 0 1rem;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  list-style: none;
+  color: #dadada;
+  margin: 1rem 0;
+}
+
+.nav-expand {
+  margin-left: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+.nav-expand .open > .top-line{
+  transform: translate(.5rem, .5rem);
+  transition: .3s ease;
+}
+
+.nav-expand > div{
+  width: 1.2rem;
+  height: .1rem;
+  background-color: #dadada;
+  margin: .4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 4rem;
+    right: 0rem;
+    width: 50vw;
+    /* 高度为整体容器高度减去菜单容器高度 */
+    height: calc(100vh - 4rem);
+    background: rgba(65, 81, 101, .9);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateX(100%);
+    transition: .5s ease-in-out;
+  }
+  .nav-menu.active { 
+    /* 选择器之间无空格 表示需要同时满足选择条件 */
+    transform: translateX(0);
+  }
+  .nav-menu li {
+    margin: 5vh;
+    opacity: 0;
+    transform: translateX(100%);
+    /* animation: slideIn .5s ease-in forwards; */
+  }
+  /* .nav-menu.active li {
+    margin: 5vh;
+    animation: slideIn .5s ease-in forwards;
+  } */
+  .nav-expand {
+    display: block;
+  }
+  .nav-expand.open div{
+    transition: .3s ease-in-out .3s;
+  }
+  .nav-expand.open .top-line {
+    transform: rotate(45deg) translate(.2rem, .5rem);
+  }
+  .nav-expand.open .middle-line {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: .3s ease-in-out;
+  }
+  .nav-expand.open .bottom-line {
+    transform: rotate(-45deg) translate(.2rem, -.5rem);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
