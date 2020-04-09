@@ -1,0 +1,77 @@
+:root {
+  --text-color: #ff4757;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  animation: backgroud 5s linear forwards;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+h3 span {
+  color: var(--text-color)
+}
+
+h3::before {
+  content: '';
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  /* 相对于相对父元素 向左偏移20% 响应地 宽度也增加20% 以遮盖尾部20%长度的文字 */
+  left: -20%;
+  /* 伪元素背景头部透明  至10%为到黑色遮罩的透明长度  以起到逐渐显示文字效果*/
+  background: linear-gradient(90deg, transparent 0%, #000 10%, #000 100%);
+   /* forwards 使得动画状态保留在完成时刻  */
+  animation: movement 3s linear forwards;
+}
+
+/* h3:hover::before {
+  cursor: pointer;
+  animation: movement 5s linear;
+} */
+
+@keyframes movement {
+  0% {
+    left: -20%;
+  }
+  99% {
+    background: linear-gradient(90deg, transparent 0%, #000 10%, #000 100%); 
+  }
+  100% {
+    left: 100%;
+    background: transparent;
+  }
+}
+
+@keyframes backgroud {
+  0% {
+    background-color: #000;
+  }
+  60% {
+    background-color: #000;
+  }
+  100% {
+    background-color: aqua;
+  }
+}
+
+
